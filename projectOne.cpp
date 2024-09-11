@@ -29,7 +29,7 @@ int main(){
 
 	//menu loop
 	while (true) {
-		// note: loop and after any selection	
+
 		char input;
 
 		// menu text
@@ -38,7 +38,7 @@ int main(){
 		
 		// in input is q end the loop
 		if (input == 'q' || input == 'Q') {
-			cout << "ending";
+
 			break;
 		// show the roster if the input is o
 		} else if (input == 'o' || input == 'O'){
@@ -49,8 +49,8 @@ int main(){
 
 		}
 
-	
-		return 0;
-
 	}
+	
+	return 0;
+	
 }
