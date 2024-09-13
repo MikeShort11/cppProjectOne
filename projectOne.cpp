@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iterator>
 #include <vector>
 #include <algorithm>
 
@@ -55,15 +54,15 @@ int main(){
 		} else if (input == 'o' || input == 'O'){
 			cout << "ROSTER" << endl;
 			for (int i = 0; i < playerNums.size(); ++i){
-				cout << "Player " << i + 1 << " -- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+				cout << "Player " << i + 1 << " -- Jersey number: " << playerNums.at(i) << ", Rating: " <<playerRtngs.at(i) << endl;
 		}
 		//add a player on input 'a'
 		} else if (input == 'a' || input == 'A') {
 			int temp;
-			cout << "Enter new player's jersey number:" << endl;
+			cout << "Enter a new player's jersey number:" << endl;
 			cin >> temp;
 			playerNums.push_back(temp);
-			cout << "Enter player's rating:" << endl;
+			cout << "Enter the player's rating:" << endl;
 			cin >> temp;
 			playerRtngs.push_back(temp);
 		// remove a player on input d
@@ -93,10 +92,10 @@ int main(){
 			cout << "Enter a Rating:" << endl;
 			cin >> rtng;
 
-			cout << "ABOVE" << rtng << endl;
+			cout << "ABOVE " << rtng << endl;
 			for (int i = 0; i < playerNums.size(); ++i){
 				if (playerRtngs.at(i) > rtng) {
-				cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+				cout << "Player " << i + 1 << " -- Jersey number: " << playerNums.at(i) << ", Rating: " <<playerRtngs.at(i) << endl;
 				}
 		
 			}
