@@ -47,8 +47,15 @@ int main(){
 				cout << "Player 1 -- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
 		}
 
+		} else if (input == 'a' || input == 'A') {
+			int temp;
+			cout << "Enter new player's jersey number:" << endl;
+			cin >> temp;
+			playerNums.push_back(temp);
+			cout << "Enter player's rating:" << endl;
+			cin >> temp;
+			playerRtngs.push_back(temp);	
 		}
-
 	}
 	
 	return 0;
