@@ -1,8 +1,19 @@
 #include <iostream>
+#include <iterator>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
+int GetIndex(vector<int> v, int k) {
+	auto temp =  std::find(v.begin(), v.end(), k);
+
+	if (temp == v.end()) {
+		return -1;
+	} else {
+		return (temp - v.begin());
+	}
+}
 int main(){
 
 	vector<int> playerNums;
@@ -24,7 +35,7 @@ int main(){
 
 	for (int i = 0; i < 5; ++i){
 
-		cout << "Player 1 -- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+		cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
 	}
 
 	//menu loop
@@ -43,10 +54,10 @@ int main(){
 		// show the roster if the input is o
 		} else if (input == 'o' || input == 'O'){
 			cout << "ROSTER" << endl;
-			for (int i = 0; i < 5; ++i){
-				cout << "Player 1 -- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+			for (int i = 0; i < playerNums.size(); ++i){
+				cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
 		}
-
+		//add a player on input 'a'
 		} else if (input == 'a' || input == 'A') {
 			int temp;
 			cout << "Enter new player's jersey number:" << endl;
@@ -54,8 +65,18 @@ int main(){
 			playerNums.push_back(temp);
 			cout << "Enter player's rating:" << endl;
 			cin >> temp;
-			playerRtngs.push_back(temp);	
+			playerRtngs.push_back(temp);
+		// remove a player on input d
+		} else if (input == 'd' || input == 'D') {
+			int temp;
+			cout << "Enter a jersey number:" << endl;
+			cin >> temp;
+			int index = GetIndex(playerNums, temp);
+
+			playerRtngs.erase(playerRtngs.begin() + index);
+			playerNums.erase(playerNums.begin() + index);
 		}
+
 	}
 	
 	return 0;
