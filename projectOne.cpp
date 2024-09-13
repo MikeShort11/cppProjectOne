@@ -22,20 +22,20 @@ int main(){
 	//get inital values fro jerseys and ratings
 	for (int i = 1; i < 6; ++i){
 		int temp;
-		cout << "enter player" << i << "'s jersey number:" << endl;
+		cout << "Enter player " << i << "'s jersey number:" << endl;
 		cin >> temp;
 		playerNums.push_back(temp);
-		cout << "enter player" << i << "'s rating:" << endl;
+		cout << "Enter player " << i << "'s rating:" << endl << endl;
 		cin >> temp;
 		playerRtngs.push_back(temp);	
 	}
 
 	//show roster after setting intital values
-	cout << endl << "ROSTER" << endl;
+	cout << "ROSTER" << endl;
 
 	for (int i = 0; i < 5; ++i){
 
-		cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+		cout << "Player " << i + 1 << " -- Jersey number: " << playerNums.at(i) << ", Rating: " <<playerRtngs.at(i) << endl;
 	}
 
 	//menu loop
@@ -44,7 +44,7 @@ int main(){
 		char input;
 
 		// menu text
-		cout << "MENU" << endl << "a - Add player" << endl << "d - Remove player" << endl << "u - Update player rating" << endl << "r - Output players above a rating" << endl << "o - Output roster" << endl << "q - Quit" << endl << endl << "Choose an option:" << endl;
+		cout << endl << "MENU" << endl << "a - Add player" << endl << "d - Remove player" << endl << "u - Update player rating" << endl << "r - Output players above a rating" << endl << "o - Output roster" << endl << "q - Quit" << endl << endl << "Choose an option:" << endl;
 		cin >> input;
 		
 		// in input is q end the loop
@@ -55,7 +55,7 @@ int main(){
 		} else if (input == 'o' || input == 'O'){
 			cout << "ROSTER" << endl;
 			for (int i = 0; i < playerNums.size(); ++i){
-				cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+				cout << "Player " << i + 1 << " -- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
 		}
 		//add a player on input 'a'
 		} else if (input == 'a' || input == 'A') {
@@ -75,8 +75,33 @@ int main(){
 
 			playerRtngs.erase(playerRtngs.begin() + index);
 			playerNums.erase(playerNums.begin() + index);
-		}
+		} else if (input == 'u' || input == 'U') {
+			int temp;
+			int rtng;
 
+			cout << "Enter a jersey number:" << endl;
+			cin >> temp;
+			cout << "Enter a new rating" << endl;
+			cin >> rtng;
+
+			int index = GetIndex(playerNums, temp);
+
+			playerRtngs.at(index) = rtng;
+
+		} else if (input == 'r' || input == 'R') {
+			int rtng;
+			cout << "Enter a Rating:" << endl;
+			cin >> rtng;
+
+			cout << "ABOVE" << rtng << endl;
+			for (int i = 0; i < playerNums.size(); ++i){
+				if (playerRtngs.at(i) > rtng) {
+				cout << "Player " << i + 1 << "-- Jersey number: " << playerNums.at(i) << " Rating: " <<playerRtngs.at(i) << endl;
+				}
+		
+			}
+
+		}
 	}
 	
 	return 0;
